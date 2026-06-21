@@ -3,13 +3,27 @@ pipeline {
 
     stages {
 
-        stage('Debug Environment') {
+        stage('Checkout') {
             steps {
-                sh 'whoami'
-                sh 'pwd'
-                sh 'echo $PATH'
-                sh 'which docker || true'
-                sh 'ls -l /usr/local/bin/docker || true'
+                echo 'Getting Source Code'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Build stage successful'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                sh '/usr/local/bin/docker build -t sample-node-app:v1 .'
+            }
+        }
+
+        stage('Verify Image') {
+            steps {
+                sh '/usr/local/bin/docker images'
             }
         }
     }
