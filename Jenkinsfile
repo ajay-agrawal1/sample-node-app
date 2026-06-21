@@ -1,36 +1,32 @@
 pipeline {
-agent any
+    agent any
 
-```
-stages {
+    stages {
 
-    stage('Checkout') {
-        steps {
-            echo 'Getting Source Code'
+        stage('Checkout') {
+            steps {
+                echo 'Getting Source Code'
+            }
         }
-    }
 
-    stage('Build') {
-        steps {
-            echo 'Building Application'
-            sh 'npm install'
+        stage('Build') {
+            steps {
+                echo 'Building Application'
+                sh 'npm install'
+            }
         }
-    }
 
-    stage('Docker Build') {
-        steps {
-            echo 'Building Docker Image'
-            sh 'docker build -t sample-node-app:v1 .'
+        stage('Docker Build') {
+            steps {
+                echo 'Building Docker Image'
+                sh 'docker build -t sample-node-app:v1 .'
+            }
         }
-    }
 
-    stage('Verify Image') {
-        steps {
-            sh 'docker images'
+        stage('Verify Image') {
+            steps {
+                sh 'docker images'
+            }
         }
     }
 }
-```
-
-}
-
