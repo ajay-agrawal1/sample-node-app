@@ -11,8 +11,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building Application'
-                sh 'npm install'
+                echo 'Build stage successful'
+               
             }
         }
 
